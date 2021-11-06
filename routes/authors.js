@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router() //router function of express
 const Author = require('../models/author')
+const Book = require('../models/book')
 
 //route for all authors
 router.get('/', async (req, res)=>{
@@ -31,14 +32,74 @@ router.post('/', async (req, res)=>{
     })
     try{
         const newAuthor = await author.save()
-        //res.redirect(`authors/${newAuthor.id}`)
-        res.redirect(`authors`)
+        res.redirect(`authors/${newAuthor.id}`)
     }catch{
         let locals = {errorMessage: "Error Creating Author"}
         res.render('authors/new', {
             author: author,
             locals: locals
         })
+    }
+})
+
+//showing the author
+router.get('/:id', async (req,res) => {
+    try{
+        const author = await Author.findById(req.params.id)
+        const books = await Book.find({ author: author.id }).limit(6).exec()
+        res.render('authors/show', {
+            author: author,
+            booksByAuthor: books
+        })
+    }catch{
+        res.redirect('/')
+    }
+})
+
+//route for the edit page
+router.get('/:id/edit', async (req,res) => {
+    try{
+        const author = await Author.findById(req.params.id)
+        res.render('authors/edit', { author: author })
+    }catch{
+        res.redirect('/authors')
+    }
+})
+
+//using put request to update
+router.put('/:id', async (req, res) => {
+    let author
+    try{
+        author = await Author.findById(req.params.id)
+        author.name = req.body.name
+        await author.save()
+        res.redirect(`/authors/${author.id}`)
+    }catch{
+        if(author == null){
+            res.redirect('/')
+        }else{
+            let locals = {errorMessage: "Error updating Author"}
+            res.render('authors/edit', {
+                author: author,
+                locals: locals
+            })
+        } 
+    }
+})
+
+//delete author
+router.delete('/:id', async (req, res) => {
+    let author
+    try{
+        author = await Author.findById(req.params.id)
+        await author.remove()
+        res.redirect('/authors')
+    }catch{
+        if(author == null){
+            res.redirect('/')
+        }else{
+            res.redirect(`/authors/${author.id}`)
+        } 
     }
 })
 
