@@ -4,6 +4,8 @@
     <!--using form fields file instead of input tags directly-->
     <%- include('_form_fields') %>
     <!--cancel button-->
-    <a href="/authors">Cancel</a>
-    <button type="submit">Create</button>
+    <div class="form-row form-row-end btn-row">
+        <a class="btn btn-danger" href="/authors">Cancel</a>
+        <button class="btn btn-primary" type="submit">Create</button>
+    </div>
 </form>
