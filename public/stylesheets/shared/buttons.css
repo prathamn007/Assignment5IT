@@ -1,0 +1,55 @@
+:root{
+    --btn-primary-bg-color: hsl(var(--base-color-hue), 100%, 80%);
+    --btn-primary-bg-color-dark: hsl(var(--base-color-hue), 100%, 70%);
+    --btn-primary-text-color: hsl(var(--base-color-hue), 100%, 20%);
+    --btn-primary-text-color-dark: hsl(var(--base-color-hue), 100%, 10%);
+    --btn-border-color: black;
+    --btn-danger-bg-color: hsl(var(--danger-color-hue), 100%, 80%);
+    --btn-danger-bg-color-dark: hsl(var(--danger-color-hue), 100%, 70%);
+    --btn-danger-text-color: black;
+    --btn-danger-text-color-dark: black;
+}
+
+.btn{
+    border: 1px solid var(--btn-border-color);
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.75rem;
+    font-size: 1.2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-row{
+    display: flex;
+    align-items: flex-start;
+}
+
+.btn-row > *{
+    margin-left: 1rem;
+}
+
+.btn-row > *:first-child{
+    margin-left: 0;
+}
+
+.btn-primary{
+    color: var(--btn-primary-text-color);
+    background-color: var(--btn-primary-bg-color);
+}
+
+.btn-primary:hover{
+    color: var(--btn-primary-text-color-dark);
+    background-color: var(--btn-primary-bg-color-dark);
+}
+
+.btn-danger{
+    color: var(--btn-danger-text-color);
+    background-color: var(--btn-danger-bg-color);
+}
+
+.btn-danger:hover{
+    color: var(--btn-danger-text-color-dark);
+    background-color: var(--btn-danger-bg-color-dark);
+}
