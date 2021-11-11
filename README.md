@@ -42,3 +42,10 @@ npm i method-override
 ```
 - The file uploading, which in our app is the Book cover uploading, will be taken care of by [FilePond](https://pqina.nl/filepond/). It presents us with a good-looking UI and file preview and also eases out the file uploading process, since we need not make use of ***multi-part forms*** for the same.
 - [***async/await***](https://javascript.info/async-await) functions are also used to provide an easier error handling, which will be done using the [***try/catch***](https://www.w3schools.com/java/java_try_catch.asp) method. 
+
+## Screenshots
+### Main Page
+Contains upto six recently added books
+
+### Show Authors Page
+Shows all the authors in a single list view from where you can edit, delete or view the author
